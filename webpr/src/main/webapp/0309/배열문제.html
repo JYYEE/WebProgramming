@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+proc1 =()=>{
+	// 배열 선언 - 방법 2가지
+	const arr=[];
+	/* const arr = new Array(); */
+	flag = true;
+	while(true){
+		// 입력
+		userName = prompt("이름입력")
+		/* if(userName != null){
+			userName = userName.trim();
+		} else {
+			break;
+		}
+		// 입력값 비교 - break;
+		if(userName.length<1) break; 
+		// 공백 들어가도 trim이면 하나도 입력 안된것과 같음
+		 */
+		if(userName != null) {
+			if(userName.trim().length<1) flag = false;
+		}
+		if(userName == null) flag = false
+		if(!flag) break;
+		 
+		// 배열에 저장
+		arr.push(userName);
+	}
+	// 출력
+	document.getElementById('result1').innerHTML = arr; 
+	// 자바에서 arr 출력하면 주소값이 나오지만 스크립트는 요소가 출력됨
+}
+
+proc2 = () => {
+	// 배열 선언
+	const numArr = new Array(); 
+	// 자바스크립트에서는 new Array(5);로 정의해서 쓰면 
+	// push 해서 데이터 추가하면 중간에 데이터 못 넣고 배열 길이 늘어남. 길이 지정해서 정의하지 말 것!  
+	while(true){
+	// 입력
+		num = prompt("수 입력")
+		if(numArr.indexOf(num)==-1) numArr.push(num)
+		if(numArr.length == 5) break;
+	}
+	// 배열 요소와 비교 -> -1이면 넣기
+	// 배열길이 5개면 끝
+	document.getElementById('result2').innerHTML = numArr;
+}
+</script>
+</head>
+<body>
+  <div class="box">
+    <p>prompt()를 이용하여 이름을 계속 입력 받아 배열에 저장하고 출력하는 프로그램<br>
+    - 입력의 마지막은 공백 문자를 입력하거나 “취소” 버튼을 눌렀을 때(null)<br>
+    </p>
+    <br> <br>
+    <input type="button" value="확인" onclick="proc1()">
+    <br> <br>
+    <div class="result" id="result1"></div>
+  </div>
+    <div class="box">
+    <p>서로 중복되지 않은 정수 5개를 입력 받아 출력하는 프로그램<br>
+    <br>
+    </p>
+    <br> <br>
+    <input type="button" value="확인" onclick="proc2()">
+    <br> <br>
+    <div class="result" id="result2"></div>
+  </div>
+</body>
+</html>

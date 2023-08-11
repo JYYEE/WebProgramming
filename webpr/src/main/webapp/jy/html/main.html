@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link type="text/css" rel="stylesheet" href="../css/webshopstyle.css">
+</head>
+<body>
+  <div id="home">
+    <header>
+      <h1>
+        <img src="../images/shopping.jpg" alt="shopping.jpg"> <a href="main.html" target=_blank>Web Shop</a>
+      </h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="main.html" target=_blank>Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">News</a></li>
+        <li><a href="#">My Account</a></li>
+        <li><a href="#">Contacts</a></li>
+      </ul>
+    </nav>
+    <div id="container">
+      <aside id="left">
+        <h2>카테고리</h2>
+        <ul>
+          <li><a href="computer.html" target="ifr">컴퓨터</a></li>
+          <li><a href="clothing.html" target="ifr">의류</a></li>
+          <li><a href="music.html" target="ifr">음악</a></li>
+          <li><a href="movie.html" target="ifr">영화</a></li>
+          <li><a href="스포츠레저.html" target="ifr">스포츠/레져</a></li>
+          <li><a href="가구인테리어.html" target="ifr">가구/인테리어</a></li>
+          <li><a href="식품.html" target="ifr">식품</a></li>
+        </ul>
+      </aside>
+      <section id="main">
+      
+          <iframe src="computer.html" name="ifr"> </iframe>
+      </section>
+      <aside id="right">
+        <div id="shopcart">
+          <h3>Shopping Cart</h3>
+          <p id="cartempty">
+            현재 쇼핑카트에 물품이 없습니다.
+            <br>
+          </p>
+          <a href="shopcart.html" target ="_blank">쇼핑카트 보기</a>
+        </div>
+
+        <div id="login">
+          <h3>Log In</h3>
+          <form name ="input" action="" method="post" >
+            아이디
+            <br>
+            <input type="text" name="id">
+            <br>
+            패스워드
+            <br>
+            <input type="password" name="password">
+            <br>
+            <br>
+            <input type="submit" value="로그인">
+            <input type="reset" value="초기화">
+            <br>
+            <br>
+            <a href="register.html" target = "_blank">회원가입</a> &nbsp; <a href="" target ="_blank">비밀번호 분실</a>
+          </form>
+        </div>
+      </aside>
+    </div>
+    <footer>Copyright(c)2023 YJY</footer>
+
+  </div>
+
+</body>
+</html>

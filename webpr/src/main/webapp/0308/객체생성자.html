@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/rectprint.js"></script> <!-- 외부 스크립트 파일 -->
+
+<script type="text/javascript"> //내부 스크립트
+
+// 객체 함수 선언 정의
+function MYRect(width, height){ // 매개변수는 지역변수
+	// 속성
+	this.width = width;
+	this.height = height;
+	// 메서드
+	this.getArea = function(){
+		return this.width * this.height;
+	}
+	this.getCircum = function(){
+		return (parseInt(this.width) + parseInt(this.height))*2;
+	}
+}
+
+// function proc(){}
+proc1 = () => {
+	// 객체 생성
+	my = new MYRect(12, 45); 
+	my.name = "사각형";
+	
+	printInfo(my, 'result1');
+}
+
+proc2 = () => {
+	my2 = new MYRect(34,56);
+	
+}
+
+</script>
+</head>
+<body>
+<div class="box">
+    <p></p>
+    <br> <br>
+    <input type="button" value="확인" onclick="proc1()">
+    <br> <br>
+    <div class="result" id="result1"></div>
+  </div>
+</body>
+</html>

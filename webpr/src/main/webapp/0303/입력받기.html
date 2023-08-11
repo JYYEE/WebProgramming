@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div {
+	border: 1px solid blue;
+	width: 500px;
+	height: 200px;
+	margin: 10px auto;
+	padding: 20px;
+}
+</style>
+<script type="text/javascript">
+window.onload = function () {
+	input1 = parseInt(prompt("첫번째 수 입력", "정수로 입력"));
+	input2 = parseInt(prompt("두번째 수 입력", "정수로 입력"));
+	
+	add = input1 +" + "+ input2 + " = " +(input1 + input2) + "<br>";
+	add += input1 +" - "+ input2 + " = " +(input1 - input2) + "<br>";
+	
+	document.getElementById("result").innerHTML = add // id만
+	document.querySelector('#result').innerHTML = add // #id
+}
+</script>
+
+</head>
+<body>
+	<p>두 개의 수를 prompt() 함수를 이용하여 입력하고 덧셈, 뺄셈의 결과값을 출력한다.</p>
+	<div id="result"></div>
+</body>
+</html>

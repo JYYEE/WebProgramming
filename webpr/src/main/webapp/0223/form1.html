@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+form {
+	border: 2px solid blue;
+	margin: 10px auto;
+	width: 40%;
+	padding: 20px;
+}
+span{ /* id, pw 입력칸 줄맞춰줌 */
+display : inline-block;
+width : 70px;
+height : 30px;
+/*border : 1px dotted red;*/
+}
+</style>
+
+</head>
+<body>
+	<form action="formtest.jsp" method="post">
+		<span>아이디</span> 
+		<input type="text" name="id"><br>
+		<!-- 아이디 입력칸 생성. 여기서 value값은 초기화값. 수정 가능-->
+		<span>비밀번호</span> 
+		<input type="password" name="pass"><br>
+		<!-- 비밀번호 입력칸 생성 -->
+		<input type="submit" value="로그인">
+		<input type="reset" value="취소">
+		<input type="hidden" name="age" value="20">
+		<!-- 기본값인 제출 버튼 생성, value 값 주면 제출 대신 value값으로 바뀜 -->
+	</form>
+
+
+	<form action="formtest.jsp" method="get">
+		<input type="text" name="id" placeholder="아이디"><br> 
+		<input type="password" name="pass" placeholder="비밀번호"><br> 
+		<input type="submit" value="로그인">
+	</form>
+
+
+</body>
+</html>

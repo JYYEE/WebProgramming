@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<style type="text/css">
+div {
+	margin: 10px;
+}
+
+/* 
+<link rel = "stylesheet" href="../css/mystyle.css">
+는 외부 스타일 참조
+내부와 외부에 같은 요소의 스타일이 지정되어 있다면 내부의 스타일이 지정됨. */
+</style>
+<script type="text/javascript">
+	function proc1() {
+		// id가 first와 second 입력요소를 검색 (자바스크립트는 맨 마지막 세미콜론 없어도 에러 안남.)
+		vfirst = document.getElementById('first');
+		vsecond = document.querySelector('#second');
+
+		// 값을 가져온다
+		res1 = parseInt(vfirst.value)
+		res2 = parseInt(vsecond.value)
+
+		// 계산
+		vres = res1 + res2;
+
+		// 출력요소를 검색 -> 결과값을 출력요소에 출력
+		document.querySelector('#result').value = vres; // input type ="text"에 출력할 때는 value 
+		document.querySelector('#dres').innerHTML = vres; // div에 출력할 때는 innerHTML 또는 innerText
+
+	}
+</script>
+</head>
+<body>
+	<pre>
+입력요소를 script에서 검색 - getElementById() / querySelector()
+입력한 값을 script에서 사용 - value
+
+출력 
+input type="text" 에 출력 - value
+div 요소에 출력 - innerHTML / innerText
+</pre>
+
+	첫번째수
+	<input type="text" id="first">
+	<br>
+	두번째수
+	<input type="text" id="second">
+	<br>
+	<br>
+	<input type="button" value="결과" onclick="proc1()">
+	<br>
+	<br>
+	결과
+	<br>
+	<input type="text" id="result">
+	<br>
+	<div id="dres"></div>
+</body>
+</html>

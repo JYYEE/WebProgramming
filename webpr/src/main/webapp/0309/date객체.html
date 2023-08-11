@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+let today = new Date();
+let day2 = new Date(10000);
+let day3 = new Date("2000.08.12"); // 문자로 쓰면 제대로 나옴
+let day4 = new Date(2000, 08,12); 
+// 숫자로 쓰면 0월부터 시작해서 08 = 9월. 배열이라고 생각하기. 숫자는 인덱스라고 생각
+// 즉, 00 = 1월, 01 = 2월, ... 11 = 12월. 월만 해당.
+
+proc1 = () => {
+	str = today + "<br>";
+	str += day2 + "<br>";
+	str += day3 + "<br>";
+	str += day4 + "<br>";
+	
+	document.getElementById('result1').innerHTML = str;
+	
+	str2 = today.toLocaleString() + "<br>";
+	str2 += day2.toLocaleDateString() + "<br>"; // date는 날짜만
+	str2 += day3.toLocaleTimeString() + "<br>"; // time은 시간만
+	str2 += day4.toLocaleString() + "<br>";
+	
+	document.getElementById('result1').innerHTML += str2; 
+	// 둘다 등호이면 첫번째 내용을 2번재 내용이 덮어씌워서 그전 거 사라짐 ==> 두번째꺼는 +=으로 사용. 
+}
+
+proc2 = () => {
+	day = today.getDay();
+	//alert(day);
+	switch(day){
+	case 0 : 
+		res = "일요일";
+		break;
+	case 1 : 
+		res = "월요일";
+		break;
+	case 2 : 
+		res = "화요일";
+		break;
+	case 3 : 
+		res = "수요일";
+		break;
+	case 4 : 
+		res = "목요일";
+		break;
+	case 5 : 
+		res = "금요일";
+		break;
+	case 6 : 
+		res = "토요일";
+		break;
+	}
+	str = today.toLocaleString() + " " + res;
+	document.getElementById('result2').innerText = str;
+}
+
+proc3 = () => {
+	const arr = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+	day = today.getDay();
+	str = `${today.toLocaleString()} ${arr[day]}`;
+	document.getElementById('result3').innerText = str;
+}
+
+proc4 = () => {
+	yoloday1 = new Date("2017. 03. 09");
+	yoloday2 = new Date("2022. 08. 03");
+	totime = today.getTime()
+	yolotime1 = yoloday1.getTime()
+	yolotime2 = yoloday2.getTime()
+	totime1 = totime - yolotime1; 
+	totime2 = totime - yolotime2;
+	litime = yolotime2 - yolotime1;
+	
+	time1 = totime1/1000/60/60/24;
+	time2 = totime2/1000/60/60/24;
+	time3 = litime/1000/60/60/24;
+	
+	str = "\t " + time3 + "\t\t" +time2 ;
+	document.getElementById('result4').innerText = str;
+	
+}
+
+proc5 = () => {
+	day = 100*24*60*60*1000 // 100에 대한 millisec의 값
+	totime = today.getTime() // 현재 날짜의 millisec값
+	cel = day + totime
+	dday = new Date(cel) // 100일 후의 날짜
+	// 요일 구하기
+	const arr = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+	dow = today.getDay();
+	str = dday.toLocaleString() + " "+arr[dow];
+	document.getElementById('result5').innerText = str;
+}
+
+proc6 = () => {
+	sellday = document.getElementById('sel').value // 문자열 ==> 객체 생성
+	todayTime = today.getTime()
+	sellTime = new Date(sellday).getTime()
+	period = (todayTime - sellTime)/1000/60/60/24;
+	str = "경과한 일수 "
+	if(period> 7) str += parseInt(period)+ "일 이므로 교환 불가능";
+	else str += parseInt(period) + "일 이므로 교환 가능";
+	document.getElementById('result6').innerText =str;
+}
+proc6tr = () =>{
+	// id = sel을 검색 - 값 가져오기 - value
+	selvalue = document.getElementById('sel').value;
+	// 값을 가지고 Date객체를 생성
+	selday = new Date(selvalue);
+	// 오늘의 getTime() - selDate의 getTime()
+	times = today.getTime() - selday.getTime();
+	if(times <0) {alert("날짜 선택 오류"); return;}
+	// 경과한 날을 구한다 - /1000/60/60/24
+	times = times/1000/60/60/24;
+	// 경과한 날을 비교한다 7일이 경과??
+	if(times >7){
+		res = "교환 불가"
+	} else {
+		res = "교환 가능"
+	}
+	str = "현재날짜 : " + today.toLocaleString() + "<br>";
+	str += "구입날짜 : " + selday.toLocaleString() + "<br>";
+	str += res + "<br>";
+	document.getElementById('result6').innerHTML = str;
+}
+
+proc7 = () => {
+	// 수료일 (크리스마스) 날짜로 Date객체를 생성
+	xmas = new Date("2023.12.25");
+	endday = new Date("2023.08.11");
+	// times = xmas getTime() - 오늘의 getTime()
+	xmastimes = xmas.getTime() - today.getTime();
+	endtimes = endday.getTime() - today.getTime();
+	// /1000/60/60/24
+	xmastimes = xmastimes/1000/60/60/24
+	endtimes = endtimes/1000/60/60/24
+	// 출력
+	str = "수료일까지" + parseInt(endtimes) + "일 남았습니다 <br>";
+	str += "크리스마스까지" + parseInt(xmastimes) + "일 남았습니다";
+	document.getElementById('result7').innerHTML = str;
+}
+</script>
+</head>
+<body>
+  <div class="box">
+    <p>date객체 생성</p>
+    <br> <br>
+    <input type="button" value="확인" onclick="proc1()">
+    <br> <br>
+    <div class="result" id="result1"></div>
+  </div>
+
+  <div class="box">
+    <p>date객체 메소드<br>
+    요일구하기 : getDay() ; 0(일요일) ~ 6(토요일)<br>
+    switch ~case  /if ~ elseif
+    </p>
+    <br> <br>
+    <input type="button" value="확인" onclick="proc2()">
+    <br> <br>
+    <div class="result" id="result2"></div>
+  </div>
+  
+  <div class="box">
+    <p>date객체 메소드<br>
+    요일구하기 : getDay() ; 0(일요일) ~ 6(토요일)<br>
+    배열이용
+    </p>
+    <br> <br>
+    <input type="button" value="확인" onclick="proc3()">
+    <br> <br>
+    <div class="result" id="result3"></div>
+  </div>
+
+  <div class="box">
+    <p>date객체 메소드<br>
+    경과 시간 구하기 : getTime() ; millisec값을 리턴<br>
+    millisec값 / 1000 = 실제 초 <br>
+    
+    태어난 날로부터 현재까지 몇 년이 경과했는지?<br>
+    100일 후의 날짜는 언제인지?<br>
+    </p>
+    <br> <br>
+    <input type="button" value="확인" onclick="proc4()">
+    <input type="button" value="확인" onclick="proc5()">
+    <br> <br>
+    <div class="result" id="result4"></div>
+    <div class="result" id="result5"></div>
+  </div>
+  
+  <div class="box">
+    <p>date객체 문제<br>
+    경과 시간 구하기 : getTime() ; millisec값을 리턴<br>
+    millisec값 / 1000 = 실제 초 <br>
+    
+    선택한 날로부터 현재까지 경과한 일 수를 구한다.<br>
+    7일 이상 경과했으면 교환 불가능 아니면 교환 가능<br>
+    </p>
+    <br> <br>
+    <input type="date" id ="sel">
+    <input type="button" value="확인" onclick="proc6tr()">
+    <br> <br>
+    <div class="result" id="result6"></div>
+  </div>  
+
+  <div class="box">
+    <p>date객체 문제<br>
+    경과 시간 구하기 : getTime() ; millisec값을 리턴<br>
+    millisec값 / 1000 = 실제 초 <br>
+    
+    수료일/ 크리스마스까지 며칠 남았나<br>
+    </p>
+    <br> <br>
+    <input type="button" value="확인" onclick="proc7()">
+    <br> <br>
+    <div class="result" id="result7"></div>
+  </div>  
+
+</body>
+</html>

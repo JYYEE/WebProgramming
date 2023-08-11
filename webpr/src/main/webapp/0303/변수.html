@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#result {
+	border: 1px solid blue;
+	width: 500px;
+	height: 200px;
+	padding: 20px;
+}
+</style>
+<script type="text/javascript">
+function sub (a, b){
+	res = a-b; // res : 전역변수
+}
+function add (a, b){
+	let ares = a+b; // ares : 지역변수. 변수 앞에 var 또는 let이 붙어있음
+	return ares; // 지역변수 값을 함수 바깥에서 사용하고 싶으면 return 해서 쓰기.
+}
+
+window.onload = function(){
+	
+	/* sub(10,4);
+	vadd = add(10,4);
+	vres = document.getElementById('result');
+	vres.innerHTML = "10 - 4 = " + res + "<br>"; // 둘다 = 으로 쓰면 나중에 나온 값이 덮어쓰기가 됨.  
+	vres.innerText += "10 + 4 = " + vadd;		// 여러번 출력할 때는 뒤에는 += 이용
+ */
+ 	sub(10, 4);
+ 	document.getElementById('result').innerHTML = "10 - 4 = " + res + "<br>";
+ 	document.getElementById('result').innerHTML += "10 + 4 = " + add(10,4) + "<br>";
+ 	// sub(a,b)는 return값이 없어서 그 자체로 사용x. add(10, 4)는 호출했을 때 return값이 존재하므로 자체 사용 가능
+ }
+
+</script>
+
+
+</head>
+<body>
+	<div id="result"></div>
+</body>
+</html>

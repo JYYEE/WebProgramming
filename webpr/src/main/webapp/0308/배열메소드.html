@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+const arr=["사과", "복숭아", "참외", "사과", "파인애플", "바나나", "사과", "망고"];
+proc1 = () => {
+	//idx = arr.indexOf("사과")
+	//alert("사과는 " + idx + "번째 있습니다.")
+	
+	// 찾고자 하는 과일 입력
+	item = prompt("찾는 과일 입력");
+	
+	str = `찾는 과일 : ${item} <br>`;
+	// 존재하는지 비교. 존재하지 않는다면 -1 반환
+	idx = arr.indexOf(item);
+	if(idx == -1){
+		str += `배열 요소에 없습니다.<br>`;
+	} else {
+		str += `${idx} 번째 있습니다.`;
+	}
+	
+	document.getElementById('result1').innerHTML = str;
+	
+}
+
+
+proc2 = () => {
+	item = prompt("찾는 과일 입력");
+	
+	str = `찾는 과일 : ${item} <br>`;
+	// 존재하는지 비교. 존재하지 않는다면 -1 반환
+	idx = arr.lastIndexOf(item);
+	if(idx == -1){
+		str += `배열 요소에 없습니다.<br>`;
+	} else {
+		str += `${idx} 번째 있습니다.`;
+	}
+	
+	document.getElementById('result2').innerHTML = str;
+}
+// 여러개의 요소를 찾으려고 할 때
+proc3 = () => { 
+	item = prompt("찾는 과일 입력");
+	str = "찾는 과일 : " + item + "<br>";
+	idx = 0;
+	flag = false; // 처음부터 없으면 false
+	while(true){ 
+		idx = arr.indexOf(item, idx);
+		if(idx == -1) break;
+		flag = true;
+		str += `${idx} ` ;
+		idx++;
+	}
+	
+	if(flag){
+		str += "번째에 있습니다."
+		
+	} else{
+		str += "없는 과일입니다. "	
+	}
+	
+	document.getElementById('result3').innerHTML = str;
+	
+}
+
+proc4 =() => {
+	str = `원래배열 : ${arr} <br>`;
+	arr.push(100,200,300);
+	str += `추가후 배열 ${arr} <br>`;
+	
+	document.getElementById('result4').innerHTML = str;
+}
+
+proc5 =() => {
+	str = `원래배열 : ${arr} <br>`;
+	value = arr.pop();
+	str += `삭제후 배열 : ${arr} <br>`;
+	str += `삭제요소 : ${value} <br>`;
+	
+	document.getElementById('result5').innerHTML = str;
+}
+
+proc6 =() => {
+	str = `원래배열 : ${arr} <br>`;
+	str += `추출후 배열 : ${arr} <br>`;
+	
+	arr2 = arr.slice(1,5) // 1~4까지 새로운 배열을 만듬. 원래 배열이 바뀌는 것은 아님.
+	str += `추출 후 새로운 배열 : ${arr2} <br>`;
+	
+	document.getElementById('result6').innerHTML = str;
+	
+}
+//arr=["사과", "복숭아", "참외", "사과", "파인애플", "바나나", "사과", "망고"];
+/*proc7 =() => {
+	item ="사과"
+	str = "찾는 과일 : " + item + "<br>";
+	idx = 0;
+	start=0;
+	end=0;
+	//flag = true;  
+	while(flag){ //flag 대신 true로
+		start = arr.indexOf(item, idx);
+		//if(start == -1){
+			//flag = false; 
+			//break;
+		//}
+		end = arr.indexOf(item, (start+1));
+		if(end == -1) {
+			//flag = false;
+			break;
+		}
+		arr2 = arr.slice((start+1), end);
+		str += `추출 후 배열 : ${arr2} <br>`;
+		idx = end;
+	}
+	document.getElementById('result7').innerHTML = str;
+}*/
+
+proc7tr =() => {
+	
+	idx=0;
+	str = "";
+	while(true){
+		start = arr.indexOf("사과", idx); // start = 0
+		end = arr.indexOf("사과", start+1); // end = 3
+		if(end == -1) break;
+		
+		aa = arr.slice(start+1, end); 
+		
+		str += `${aa} <br>`
+		idx = end; // 시작점 +1을 하므로 idx = end가 되어야함.
+	}
+	document.getElementById('result7').innerHTML = str;
+}
+
+proc8 = () => {
+	str = `원래 배열 : ${arr} <br>`;
+	//arr.splice(2,2,100,200,300);
+	arr.splice(2,0,100,200,300);
+	str += `수정 후 배열 : ${arr} <br>`;
+	document.getElementById('result8').innerHTML = str;
+}
+
+proc9 = () => {
+	str = `원래 배열 : ${arr} <br>`;
+	arr.splice(3,1);
+	str += `수정 후 배열 : ${arr} <br>`;
+	document.getElementById('result9').innerHTML = str;
+}
+proc10 = () => {
+	len1 = arr.length;
+	str = arr.join();
+	len2 = str.length;
+	res = "배열의 길이 " + len1 +"<br>";
+	res += "문자열의 길이 " + len2 + "<br>";
+	
+	for(i=0;i<len1; i++){
+		res +=`arr[${i}] : ${arr[i]} <br>`;	
+	}// 배열의 길이
+	
+	for(i=0;i<len2; i++){
+		res +=`str[${i}] : ${str[i]} <br>`;
+	}
+	
+	document.getElementById('result10').innerHTML = res;
+}
+
+</script>
+</head>
+<body>
+  <div class="box">
+    <p>
+      배열 요소의 위치 찾기 <br> 
+      indexOf() : 맨 앞에서부터 먼저 같은 요소의 index값 반환<br>
+      lastIndexOf() : 맨 뒤에서부터 같은 요소의 index값 반환<br> 
+      중간에 있는 것을 찾고 싶으면 start위치를 지정해서 찾아야함.<br>
+    </p>
+    <br> <br>
+    <input type="button" value="index" onclick="proc1()">
+    <input type="button" value="last" onclick="proc2()">
+    <input type="button" value="index여러개" onclick="proc3()">
+    <br> <br>
+    <div class="result" id="result1"></div>
+    <div class="result" id="result2"></div>
+    <div class="result" id="result3"></div>
+  </div>
+  
+  <div class="box">
+    <p>
+      배열요소의 추가/삭제<br>
+      push(a,b,c,...) : 마지막에 요소를 추가<br>
+      pop() : 마지막 요소를 제거하여 리턴<br>
+    </p>
+    <br> <br>
+    <input type="button" value="push" onclick="proc4()">
+    <input type="button" value="pop" onclick="proc5()">
+    <br> <br>
+    <div class="result" id="result4"></div>
+    <div class="result" id="result5"></div>
+  </div>
+  
+    <div class="box">
+    <p>
+      배열 요소의 위치 찾기 <br> 
+      indexOf() : 맨 앞에서부터 먼저 같은 요소의 index값 반환<br>
+      lastIndexOf() : 맨 뒤에서부터 같은 요소의 index값 반환<br> 
+      중간에 있는 것을 찾고 싶으면 start위치를 지정해서 찾아야함.<br>
+    </p>
+    <br> <br>
+    <input type="button" value="index" onclick="proc1()">
+    <input type="button" value="last" onclick="proc2()">
+    <input type="button" value="index여러개" onclick="proc3()">
+    <br> <br>
+    <div class="result" id="result1"></div>
+    <div class="result" id="result2"></div>
+    <div class="result" id="result3"></div>
+  </div>
+  
+  <div class="box">
+    <p>
+      배열요소의 추출<br>
+      slice(a,b,c,...) : start ~ end-1 까지 추출해서 새로운 배열을 만든다.<br>
+      
+    </p>
+    <br> <br>
+    <input type="button" value="slice" onclick="proc6()">
+    <input type="button" value="slice" onclick="proc7()">
+    <br> <br>
+    <div class="result" id="result6"></div>
+    <div class="result" id="result7"></div>
+  </div>
+  
+  <div class="box">
+    <p>
+      배열의 수정 - 삽입, 삭제<br>
+      splice(index, n, a,b,c,...) : index위치에서 n개를 삭제하고, a, b, c,... 아이템을 삽입한다.<br>
+                                    n이 0이면 삭제없이 아이템을 추가한다.
+      splice(index, n) : index위치에서 n개를 삭제한다.<br>
+    </p>
+    <br> <br>
+    <input type="button" value="splice" onclick="proc8()">
+    <input type="button" value="splice삭제" onclick="proc9()">
+    <br> <br>
+    <div class="result" id="result8"></div>
+    <div class="result" id="result9"></div>
+  </div>
+  
+  <div class="box">
+    <p>
+      배열의 문자열 변환<br>
+      join(구분자) : 구분자를 지정한다. 구분자를 생략하면 ,를 기준으로 한다.<br>
+      arr=["사과", "복숭아", "참외", "사과", "파인애플", "바나나", "사과", "망고"];<br>
+      join 문자열 = "사과,복숭아,참외,사과,파인애플,바나나,사과,망고"로 바뀜<br>
+    </p>
+    <br> <br>
+    <input type="button" value="join" onclick="proc10()">
+    <br> <br>
+    <div class="result" id="result10"></div>
+  </div>
+</body>
+</html>

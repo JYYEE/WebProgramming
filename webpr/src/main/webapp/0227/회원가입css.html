@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title> 
+<link rel="stylesheet" href="../css/mystyle.css" type="text/css"> 
+<style type="text/css"> /*내부스타일*/
+form{
+	border : 5px solid green; 
+}
+</style>
+
+</head>
+
+<body>
+	<h2>회원가입 화면</h2>
+	<form id="f2"  action=""> <!-- 인라인스타일 -->
+		<label>이름</label>
+		<input type="text" name="name">
+		<br>
+		<label>주소</label>
+		<input type="text" name="addr">
+		<br>
+		<label>이메일</label>
+		<input type="email" name="mail">
+		<br>
+		<label>성별</label>
+		<input type="radio" name=gender value="Male">
+		Male
+		<input type="radio" name=gender value="Female">
+		Female <br>
+		<label>내용</label>
+		<br>
+		<textarea rows="10" cols="60" name=area></textarea>
+		<br>
+		<input type="submit">
+		<input type="reset">
+	</form>
+</body>
+</html>

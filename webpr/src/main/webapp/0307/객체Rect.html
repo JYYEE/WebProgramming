@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src = "../js/rectprint.js"></script>
+<script type="text/javascript">
+ var rect = {
+		 width : 12,
+		 height : 9,
+		 
+		 getArea(){
+			 return this.width * this.height;
+		 },
+		 getCircum(){
+			 return (parseInt(this.width) + parseInt(this.height))*2;
+		 } // es6 축약방식
+		 
+		 /* getArea : function(){
+			 
+		 }, // 메소드는 value자리에 function 이 옴.
+		 getCircum : function(){
+			 
+		 } */
+ }
+ 
+ // let proc1 = function(){}
+ let proc1 = () => {
+	 rect.name = "사각형"; // 나중에 동적 추가
+	 
+	 // 출력
+	 //str = "가로 : " + rect.width +"<br>"; 
+	 /*str = `이름 : ${rect.name} <br>`;
+	 str += `가로 : ${rect.width} <br>`;
+	 str += `세로 : ${rect.height} <br>`;
+	 str += `면적 : ${rect.getArea()} <br>`;
+	 str += `둘레 : ${rect.getCircum()} <br>`;
+	 
+	 document.getElementById('result1').innerHTML = str;*/
+	 
+	 printInfo(rect,'result1');
+ }
+ 
+ proc2 =() => {
+	 // 입력 - rect 객체의 속성에 대입
+	 rect.width = prompt("가로 입력");
+	 rect.height = prompt("세로 입력");
+	 rect.name = prompt("이름 입력");
+	 /*
+	 // 계산 처리
+	 area = rect.getArea();
+	 cir = rect.getCircum();
+	 // rect가 전역변수와 1과 2가 같은 값을 갖게됨.
+	 str = `이름 : ${rect.name} <br>`;
+	 str += `가로 : ${rect.width} <br>`;
+	 str += `세로 : ${rect.height} <br>`;
+	 str += `면적 : ${area} <br>`;
+	 str += `둘레 : ${cir} <br>`;
+	 
+	 document.getElementById('result2').innerHTML = str;
+	 */
+	 printInfo(rect,'result2');
+	 
+	 
+ }
+
+</script>
+
+</head>
+<body>
+  <div class="box">
+    <p> 리터럴 방식의 Rect객체<br>
+    속성 : width, height<br>
+    메소드 : getArea(), getCircum() <br>  
+    </p>
+    <br> <br>
+    <input type="button" value="확인" onclick="proc1()">
+    <br> <br>
+    <div class="result" id="result1"></div>
+  </div>
+  
+  <div class="box">
+    <p>리터럴 방식의 Rect객체<br>
+    가로, 세로의 값을 입력하여 출력
+    </p>
+    <br> <br>
+    <input type="button" value="확인" onclick="proc2()">
+    <br> <br>
+    <div class="result" id="result2"></div>
+  </div>
+</body>
+</html>

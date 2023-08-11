@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/rectprint.js"></script>
+<script type="text/javascript">
+// 객체 선언 - 빈 객체
+let rect = {
+		
+}
+
+proc1 = () =>{
+	// 빈 객체에 속성 추가
+	rect.width = 34;
+	rect.height = 25;
+	rect.name = "네모";
+	// 빈 객체에 메서드 추가
+	rect.getArea = function() {
+		return this.width * this.height;
+	}; 
+	/* rect.getArea(){
+		this.width * this.height;
+	}; */
+	
+	rect.getCircum = function(){
+		 return (parseInt(this.width) + parseInt(this.height))*2;
+	 };
+	 
+	 // 출력
+	 printInfo(rect, 'result1');
+}
+
+</script>
+
+</head>
+<body>
+<div class="box">
+    <p>빈 객체 선언 let rect = {}<br>
+    선언 후 속성과 메소드를 추가<br>
+    정보출력 - 외부스크립트를 이용<br>
+    &lt;script src="../js/rectprint.js">&lt;/script>
+    </p>
+    <br> <br>
+    <input type="button" value="확인" onclick="proc1()">
+    <br> <br>
+    <div class="result" id="result1"></div>
+  </div>
+</body>
+</html>

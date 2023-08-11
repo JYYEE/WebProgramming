@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div {
+	border: 1px solid blue;
+	margin: 10px;
+	padding: 5px;
+	box-sizing: border-box;
+}
+
+#main {
+	display: flex;
+	flex-direction: column;
+}
+
+#header, #footer {
+	height: 100px;
+}
+
+#container {
+	display: flex;
+	height: 400px;
+}
+
+#left {
+	flex: 30%;
+}
+
+#center {
+	flex: 70%
+}
+</style>
+</head>
+<body>
+	<div id="main">
+		<div id="header">header</div>
+		<div id="container">
+			<div id="left">left</div>
+			<div id="center">center</div>
+		</div>
+		<div id="footer">footer</div>
+	</div>
+</body>
+</html>

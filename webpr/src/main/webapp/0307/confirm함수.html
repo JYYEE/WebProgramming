@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+proc1 =()=> {
+	str="";
+	while (true) {
+		// 입력
+		su = prompt("구구단 입력");
+		
+		sureg = /^[0-9]+$/
+		if(!(sureg.test(su))) return;
+		// continue : 다시 while문 시작, break : while문 나가기, return : 함수 종료
+		
+		str += "*** " + su + "단 *** <br>"
+		// 구구단 작성 - for(1~9)
+		for(let i=1; i<=9; i++){
+			str += su + " * " + i + " = " + i*su + "<br>";
+		}
+		// 출력
+		document.getElementById('result1').innerHTML = str;
+		
+		// 계속 할까요? - 확인(true) 또는 취소(false)
+		// 취소 버튼 클릭시 - false값이 리턴되면 종료
+		yn = window.confirm("계속할까요??");
+		
+		if(!yn) break; // yn == false랑 같은 의미
+	}
+}
+</script>
+</head>
+<body>
+<div class="box">
+    <p>confirm함수<br>
+    확인 버튼 클릭시 구구단 수를 입력하여 구구단을 출력한다.<br>
+    반복해서 수행하는데 계속 할까요??  -confirm() 함수를 이용하여 
+    취소버튼(false) 클릭하면 종료한다. 
+    </p>
+    <br> <br>
+    <input type="button" value="확인" onclick="proc1()">
+    <br> <br>
+    <div class="result" id="result1"></div>
+  </div>
+</body>
+</html>

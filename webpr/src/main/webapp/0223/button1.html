@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+span{
+display : inline-block;
+width : 120px;
+height : 30px;
+}
+
+</style>
+</head>
+<body>
+	<form action="">
+		<span>아이디</span> <input type="text" name="id"> <br> <span>비밀번호</span>
+		<input type="password" name="pass"><br> <input
+			type="button" value="확인" onclick="alert('hello')">
+		<!-- alert : 메세지창 띄워줌. HTML은 따옴표 구분 안하지만 바깥쪽에 ""쓰면 안쪽은'', 바깥쪽에 ''쓰면 안쪽은 "" 
+					 버튼에 기능을 부여하는게 개발자가 할 일-->
+	</form>
+	<br>
+	<form action="button.jsp" method="post">
+		<span>아이디</span> 
+		<input type="text" name="id"> <br> 
+		
+		<span>비밀번호</span>
+		<input type="password" name="pass"><br>
+		
+		<span>성별</span>
+		<input type="radio" name="gender" value= "남자" checked>남성 <!-- value값 없으면 on으로 출력 -->
+		<input type="radio" name="gender" value= "여자">여성
+		<br>
+		<span>좋아하는 음식</span><br> <!-- 여러개를 동시에 체크 -->
+		<input type="checkbox" name="foods" value="떡볶이" checked>떡볶이
+		<input type="checkbox" name="foods" value="치맥" >치킨과 맥주
+		<input type="checkbox" name="foods" value="피자와인">피자와 와인
+		<input type="checkbox" name="foods" value="잡채">잡채
+		<input type="checkbox" name="foods" value="불고기">불고기
+		<input type="checkbox" name="foods" value="삼겹살">삼겹살
+		<input type="checkbox" name="foods" value="족발">족발
+		
+		<br><br>
+		<span>첨부파일</span>
+		<input type="file" name = "file">
+		
+		<br><br>
+		<input type="submit" >
+		
+
+	</form>
+
+</body>
+</html>

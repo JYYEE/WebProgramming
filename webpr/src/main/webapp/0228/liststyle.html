@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+body {
+	min-width: 700px;
+}
+
+ul, li, ol {
+	box-sizing: border-box;
+}
+
+ul, ol {
+	border: 1px solid blue;
+	width: calc(20% - 1%);
+	margin: 10px;
+	padding: 20px;
+	float: left;
+	overflow : scroll;                                         
+}
+
+li {
+	border: 1px dotted green;
+	background: pink;
+	}
+/*#u1{
+ list-style-type: disk;  검정 동그라미,기본값 
+}*/
+#u2 {
+	list-style-type: circle; /* 하얀 동그라미 */
+	list-style: square inside url(../images/check.png);
+}
+
+#u3 {
+	list-style-type: square; /* 검정 사각형 */
+	list-style-position: inside;
+}
+
+#u4 {
+	list-style-image: url(../images/check.png);
+	list-style-position: inside;
+}
+
+hr {
+	clear: both;
+}
+/* ol{
+width : calc(20% - 1%);
+float : left;
+} */
+#o1 {
+	list-style-type: decimal;
+}
+
+#o2 {
+	list-style: upper-alpha inside;
+}
+
+#o3 {
+	list-style: hangul inside;
+}
+</style>
+</head>
+<body>
+	<ul id="u1">
+		<li>Html</li>
+		<li>CSS</li>
+		<li>JavaScript</li>
+		<li>Ajax</li>
+	</ul>
+	<ul id="u2">
+		<li>Html</li>
+		<li>CSS</li>
+		<li>JavaScript</li>
+		<li>Ajax</li>
+	</ul>
+	<ul id="u3">
+		<li>Html</li>
+		<li>CSS</li>
+		<li>JavaScript</li>
+		<li>Ajax</li>
+	</ul>
+	<ul id="u4">
+		<li>Html</li>
+		<li>CSS</li>
+		<li>JavaScript</li>
+		<li>Ajax</li>
+	</ul>
+	<hr>
+	<ol id="o1">
+		<li>Html</li>
+		<li>CSS</li>
+		<li>JavaScript</li>
+		<li>Ajax</li>
+	</ol>
+	<ol id="o2">
+		<li>Html</li>
+		<li>CSS</li>
+		<li>JavaScript</li>
+		<li>Ajax</li>
+	</ol>
+	<ol id="o3">
+		<li>Html</li>
+		<li>CSS</li>
+		<li>JavaScript</li>
+		<li>Ajax</li>
+	</ol>
+	<ol id="o4">
+		<li>Html</li>
+		<li>CSS</li>
+		<li>JavaScript</li>
+		<li>Ajax</li>
+	</ol>
+</body>
+</html>

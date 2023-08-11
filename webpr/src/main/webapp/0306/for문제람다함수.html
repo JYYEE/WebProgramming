@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<link rel="shortcut icon" type="image/x-icon" href="../images/check.png" />
+<!-- 없으면 pavicon 에러는 나지만 프로그램에 영향을 주는 것은 아님 -->
+<style type="text/css">
+table {
+	border: 1px solid blue;
+	border-spacing: 10px;
+	/* border-collapse: collapse;  테이블 중간 선 붙이기 */
+}
+
+td {
+	width: 50px;
+	height: 50px;
+	text-align: center;
+}
+</style>
+<script type="text/javascript">
+/* function proc1() {
+	
+}
+proc1 = function(){
+	
+} */
+proc1 = () => {
+	res = "<table border = '1'>";
+        for(let i=1 ;i<10; i++){
+        	res +="<tr>"
+        	for(let j=1; j<10; j++){
+        		res +="<td>"+ i*j + "</td>"
+        	}
+        	res +="</tr>"
+        }
+        res += "</table>"
+        
+        document.getElementById('result').innerHTML = res;
+}
+
+proc2 = () => {
+	sum = 0;
+	/* for(let i=1; i<= 100; i++){
+		if(i%2 == 0 ){
+			sum +=i;
+		}
+		continue;
+	} */
+	/* for(i=2 ; i<=100; i +=2){
+		sum +=i;
+	} */
+	for(i=1 ; i<=100; i++){
+		if(i%2 !=0){
+			continue;
+		}
+		sum += i;
+	}
+	document.getElementById('result2').innerHTML = `1~100 까지 짝수의 합 = ${sum}`;
+}
+
+proc3 = () => {
+	sum = 0;
+	str ="";
+	while(true) { // for(let i=0; ; ){ } for문도 무한루프 가능
+		// 입력
+		num = parseInt(prompt("숫자를 입력하시오."));
+		// 비교 - 입력값이 0인지 확인
+		if(num == 0){
+			break;
+		}
+		// 입력값 더하기
+		if(str == ""){
+			str = num;
+		} else {
+		str += " + " + num;
+		}
+		sum +=num;
+	}
+	// 출력
+	//document.getElementById('result3').innerHTML = sum;
+	//document.getElementsByClassName('result')[2].innerHTML = sum;
+	//document.querySelector('#result3').innerHTML = sum;
+	document.querySelectorAll('.result')[2].innerHTML = str + " = " +sum;
+	/* (querySelector은 같은 게 있으면 무조건 첫번째이므로 여러개 존재하면 All 붙여서 배열로 찾고 인덱스 붙여주기) */
+}
+
+proc4 = () => {
+	str = "";
+	for(let i = 1; i<=10; i++){
+		for (let k=1 ; k<=10; k++){
+			if((i+k) % 3 != 0){
+				continue;
+			} 
+			//str += i + " " + k + "<br>";
+			str += `${i} ${k} <br>`
+		}
+	}
+	document.getElementById('result4').innerHTML = str;
+}
+
+proc5 = () => {
+	str = "";
+	for(let i =1; i<=100; i++){
+		if(i%2 == 0 && i%3 ==0){
+			str += i + " ";
+		}
+	/* 	if(i%6 !=0){
+			continue
+		}
+		str += i +" ";
+	 */}
+	document.getElementById('result5').innerHTML = "1~100까지 중 2의 배수이면서 3의 배수인 것 " + str 
+}
+
+proc6 = () => {
+	str ="";
+	while(true){
+		// 입력
+		first = parseInt(prompt("첫번째 수"));
+		second = parseInt(prompt("두번째 수"));
+		// break 비교
+		if(first == 0 && second == 0 ){
+			break;
+		} 
+		// 처리대상 비교
+		if(first+second<100){
+			continue;
+		} 
+		str += first + " " +second +"<br>";
+	}
+	// 출력
+	document.getElementById('result6').innerHTML = str;
+}
+</script>
+
+</head>
+<body>
+  <div class="box">
+    <p>구구단을 출력 - table을 이용하여 출력</p>
+    입력 : x
+    <br>
+    출력 : div요소를 이용 - innerHTML / innerText
+    <br>
+    <p>람다 함수 - 화살표 함수</p>
+    function이 없어지고 () 뒤에 화살표가 생김
+    <br>
+    <input type="button" value="확인" onclick="proc1()">
+    <br>
+    <br>
+    <div class="result" id="result"></div>
+  </div>
+
+  <div class="box">
+    <p>1부터 100까지의 짝수의 합을 구하기 - continue를 이용</p>
+    <br>
+    <p>람다 함수 - 화살표 함수</p>
+    function이 없어지고 () 뒤에 화살표가 생김
+    <br>
+    <br>
+    <input type="button" value="확인" onclick="proc2()">
+    <br>
+    <br>
+    <div class="result" id="result2"></div>
+  </div>
+
+  <div class="box">
+    <p>사용자가 입력한 값을 계속 더하고, 사용자가 0을 입력하면 그때까지 누적된 값을 출력</p>
+    <br>
+    <p>람다 함수 - 화살표 함수</p>
+    function이 없어지고 () 뒤에 화살표가 생김
+    <br>
+    <br>
+    <input type="button" value="확인" onclick="proc3()">
+    <br>
+    <br>
+    <div class="result" id="result3"></div>
+  </div>
+
+  <div class="box">
+    <p>다중 for문을 이용해서 1~ 10 까지 중 i와 k의 더한 합이 3의 배수일 때만 출력 - continue 이용</p>
+    <br>
+    <p>람다 함수 - 화살표 함수</p>
+    function이 없어지고 () 뒤에 화살표가 생김
+    <br>
+    <br>
+    <input type="button" value="확인" onclick="proc4()">
+    <br>
+    <br>
+    <div class="result" id="result4"></div>
+  </div>
+
+  <div class="box">
+    <p>1~100 까지 중 2의 배수이면서 3의 배수인 것만 출력</p>
+    <br>
+    <input type="button" value="확인" onclick="proc5()">
+    <br>
+    <br>
+    <div class="result" id="result5"></div>
+  </div>
+
+  <div class="box">
+    <p>
+      두 수를 입력(prompt) 두수의 합이 100이상일이때만 출력
+      <br>
+      (continue를 이용 , 두수 모두 0 이 입력되면 종료)
+    </p>
+    <br>
+    <input type="button" value="확인" onclick="proc6()">
+    <br>
+    <br>
+    <div class="result" id="result6"></div>
+  </div>
+</body>
+</html>

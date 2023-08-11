@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+proc1 = () => {
+	setTimeout(function(){
+		document.getElementById('result1').style.backgroundColor="red"
+		
+	}, 1000);
+}
+
+proc2 = (button) => {
+	// button : 매개변수(지역변수) => stop에서 쓰려고 전역변수로 바꿔줘야함
+	button.style.display = "none"; 
+	gbut = button; // gbut : 전역변수
+	a = setInterval(setOut , 
+			/* setOut으로 써야함. setOut()처럼 함수 호출하면 안됨.
+			function(){
+		 console.log(a);
+		cr = parseInt(Math.random()*256);
+		cg = parseInt(Math.random()*256);
+		cb = parseInt(Math.random()*256);
+		document.getElementById('result2').style.backgroundColor= "rgb(" + cr + "," + cg + ", " + cb +")"; 
+		
+	},*/ 500)
+}
+
+function setOut(){
+	cr = parseInt(Math.random()*256);
+	cg = parseInt(Math.random()*256);
+	cb = parseInt(Math.random()*256);
+	// 16진수로 변환
+	cr16 = cr.toString(16);
+	cg16 = cg.toString(16);
+	cb16 = cb.toString(16);
+	
+	//document.getElementById('result2').style.backgroundColor= "rgb(" + cr + "," + cg + ", " + cb +")";
+	document.getElementById('result2').style.backgroundColor= "#"+cr16+cg16+cb16;
+												// 백틱 이용 `# ${cr16}${cg16}${cb16}`
+}
+
+stop = () => {
+	gbut.style.display = "block"; // inline 은 줄 안바뀌고 block는 줄바뀜.
+	clearInterval(a);
+}
+
+</script>
+</head>
+<body>
+
+
+  <div class="box">
+    <p>setTimeout(fn, millisec) : millisec 시간이 경과한 후 fn을 수행 후 종료 
+    </p>
+    <br> <br>
+    <input type="button" value="확인" onclick="proc1()">
+    <br> <br>
+    <div class="result" id="result1"></div>
+  </div>
+  
+  <div class="box">
+    <p>변수 = setInterval(fn, millisec) : millisec 시간이 경과할 때 마다 fn을 수행<br>
+    clearInterval(변수) : 변수에 실행을 종료.
+    </p>
+    <br> <br>
+    <input type="button" value="확인" onclick="proc2(this)"> <!-- proc2를 호출하는 객체 : 버튼 = this -->
+    <input type="button" value="종료" onclick="stop()">
+    <br> <br>
+    <div class="result" id="result2"></div>
+    <div class="result" id="result3"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+table {
+	border : 2px solid green;
+	border-spacing : 20px;
+	empty-cells : hide;
+}
+td {
+width : 300px;
+height : 40px;
+text-align : center;
+}
+tr:nth-child(even) {
+background-color: lightgreen; 
+}
+tr:nth-child(odd){
+background: lightblue;
+}
+tr:nth-child(1) {
+background : yellow;
+} /* 마지막 설정이 덮어쓰여지므로 1번째 행이 맨 마지막에 배치 또는 th로 이름 변경 */
+</style>
+</head>
+<body>
+<table border="1">
+<tr>
+<td>1</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>2</td>
+</tr>
+</table>
+</body>
+</html>

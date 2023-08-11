@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+ let str = "무궁화 꽃이 피었습니다";
+proc1 = () => {
+	sub = str.substring(2,6) 
+	sli = str.slice(2,6)
+	subs = str.substr(2,6)
+	
+	res = str + "<br>";
+	res += "str.substring(2,6) : " +sub + "<br>";
+	res += `str.slice(2,6) : ${sli} <br>`;
+	res += "str.substr(2,6) : " + subs + "<br>";
+	
+	document.getElementById('result1').innerHTML = res;
+}
+
+proc2 = () => {
+	arr = str.split(" ");
+	res = str + "<br>";
+	res += "배열의 길이 : " + arr.length + "<br>";
+	for(i=0;i<arr.length;i++){
+		res += `arr[${i}] : ${arr[i]} <br>`; 
+	}
+	res += `str.split(" ") : ${arr} <br>`;
+	
+	document.getElementById('result2').innerHTML = res;
+}
+
+</script>
+
+</head>
+<body>
+
+
+  <div class="box">
+    <p>
+    str = "무궁화 꽃이 피었습니다";<br>
+    substring(start, end) : start ~end-1까지 문자를 추출<br>
+    slice(start, end) : start ~ end-1까지 문자를 추출<br>
+    substr(start, length) : start부터 length갯수만큼 추출 (공백도 1칸으로 포함)<br>
+    <br>
+    split(구분자, 갯수) : 구분자를 기준으로 문자열을 분리하여 배열로 생성<br>
+    갯수가 생략되면 전체를 대상으로 한다.<br>
+    </p>
+    <br> <br>
+    <input type="button" value="확인" onclick="proc1()">
+    <input type="button" value="split" onclick="proc2()">
+    <input type="button" value="substr" onclick="proc3()">
+    <br> <br>
+    <div class="result" id="result1"></div>
+    <div class="result" id="result2"></div>
+    <div class="result" id="result3"></div>
+  </div>
+</body>
+</html>

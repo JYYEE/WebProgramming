@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+proc1 = () => {
+	// 입력한 값 가져오기
+	namevalue = document.getElementById('name').value;
+	opener.document.getElementById('result2').innerHTML = namevalue;
+	// opener = 자바의 super window객체의 'result2'에 출력됨.
+	window.close();
+}	
+</script>
+</head>
+<body>
+
+
+  <div class="box">
+    <p>이름 입력 . 부모창의 id=result2요소에 출력</p>
+    
+    <br> <br>
+    <input type = "text" id="name"><br><br>
+    <input type="button" value="확인" onclick="proc1()">
+    <br> <br>
+  </div>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<style type="text/css">
+</style>
+<script type="text/javascript">
+	//window.onload = function() { // 윈도우창과 동시에 실행할 때 사용
+	//function proc1(){ //기본 방식. 아래도 가능
+	proc1 = function() {
+		// 입력 - 숫자 2개, 연산자 1개
+		su1 = parseInt(prompt("수1 입력"));
+		su2 = parseInt(prompt("수2 입력"));
+		op = prompt("연산자 입력");
+
+		// 비교
+		switch (op) {
+		case "+":
+			res = su1 + su2;
+			break;
+		case "-":
+			res = su1 - su2;
+			break;
+		case "*":
+			res = su1 * su2;
+			break;
+		case "/":
+			res = su1 / su2;
+			break;
+		}
+
+		// 출력 - '34 - 23 = 11' 이런 식으로 출력
+		//str = su1+" " +" "+ op+" " +" "+ su2 + " = " + res;
+
+		// 백틱을 이용해서 간단하게 표현
+		str = `${su1} ${op} ${su2} = ${res}`;
+
+		// id = result인 요소를 검색
+		document.getElementById('result').innerHTML = str;
+		// 출력하고자 하는 내용에 HTML 태그 없으므로 innerText로도 출력 가능
+	}
+	proc2 = function() {
+		// 입력
+		su = prompt("수 입력", "1~100사이로 입력")
+
+		// 점수 비교
+		switch (parseInt(su / 10)) {
+		case 9:
+		case 10:
+			res = "A";
+			break;
+		case 8:
+			res = "B";
+			break;
+		case 7:
+			res = "C";
+			break;
+		case 6:
+			res = "D";
+			break;
+		default:
+			res = "F";
+			break;
+		}
+		// 출력
+		//str = "점수 = " + su + "<br>";
+		//str += "학점 = " + res + "<br>";
+		// 백틱 이용
+		str = `점수 = ${su} <br> 학점 = ${res} <br>`;
+
+		document.getElementById('result2').innerHTML = str;
+
+	}
+	proc3 = function() {
+		// 입력
+		first = prompt("첫번째 입력")
+		second = prompt("두번째 입력")
+
+		// 비교
+		if (first == second) {
+			res = "비겼습니다."
+		} else if (first == "가위" && second == "보" || first == "보"
+				&& second == "바위" || first == "바위" && second == "가위") {
+			res = "첫번째 사람 승!!!"
+		} else {
+			res = "두번째 사람 승!!!"
+		}
+		// 출력
+		str = `첫번째 사람 : ${first} <br> 두번재 사람 : ${second} <br><br> 결 과 : ${res}`;
+		
+		//document.getElementById('result3').innerHTML = str;
+		
+		text = document.getElementsByClassName('result');
+		text[2].innerHTML = str;
+	}
+</script>
+</head>
+<body>
+  <div class="box">
+    <p>숫자 2개와 연산자 1개를 입력 받아 연산자에 맞는 계산결과를 출력</p>
+    입력 : prompt
+    <br>
+    출력 : div요소를 이용 - innerHTML / innerText
+    <br>
+    백틱을 이용한 출력내용 - 템플릿 리터럴
+    <br>
+    일반 문자열의 + 기호와 ""를 쓰지 않고 단순하게 처리
+    <br>
+    변수를 표현할 때는 ${변수}
+    <br>
+    <input type="button" value="확인" onclick="proc1()">
+    <br>
+    <br>
+    <div class="result" id="result"></div>
+  </div>
+
+  <div class="box">
+    <p>점수를 입력받아 학점을 출력</p>
+    입력 : prompt
+    <br>
+    점수가 90 ~ 100이면 ‘A’
+    <br>
+    점수가 80 ~ 89이면 ‘B’
+    <br>
+    점수가 70 ~ 79이면 ‘C’
+    <br>
+    점수가 60 ~ 69이면 ‘D’
+    <br>
+    점수가 0 ~ 59이면 ‘F’
+    <br>
+    <br>
+    출력 : div요소를 이용 - innerHTML / innerText
+    <br>
+    백틱을 이용한 출력내용 - 템플릿 리터럴
+    <br>
+    일반 문자열의 + 기호와 ""를 쓰지 않고 단순하게 처리
+    <br>
+    변수를 표현할 때는 ${변수}
+    <br>
+    <input type="button" value="확인" onclick="proc2()">
+    <br>
+    <br>
+    <div class="result" id="result2"></div>
+  </div>
+
+  <div class="box">
+    <p>두 사람의 가위, 바위, 보를 입력 받아 승자를 출력</p>
+    입력 : prompt
+    <br>
+    출력 : div요소를 이용 - innerHTML / innerText
+    <br>
+    <br>
+    <input type="button" value="확인" onclick="proc3()">
+    <br>
+    <br>
+    <div class="result" id="result3"></div>
+  </div>
+</body>
+</html>

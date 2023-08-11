@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+/* function proc1(op) {
+	this : proc1() 함수를 호출한 button객체
+}
+proc1 = function(op){}
+	this : proc1() 함수를 호출한 button객체
+ */
+proc1 = (op) => { 
+	
+  // 입력한 값 가져오기 - 각 id를 검색
+  fvalue = document.getElementById('first').value.trim();
+  svalue = document.querySelector('#second').value.trim();
+  
+  /*a = window.isNaN(fvalue);
+  b = window.isNaN(svalue);
+  console.log(a,b)*/
+  
+  // 정규식 /^   $/ 중간 공백x 형식이 맞는지 확인. 
+  freg = /^[0-9]+$/
+  sreg = /^[0-9]+$/
+
+    if(freg.test(fvalue) && sreg.test(svalue)){
+    	alert('형식이 바르게 입력되었습니다. 계산을 시작합니다.');
+    // op를 비교
+    switch(op){
+    	case '+' : 
+    		res = add();
+    		break;
+    	case '-' : 
+    		res = subtract();
+    		break;
+    	case '*' : 
+    		res = multiple();
+    		break;
+    	case '/' : 
+    		res = divide();  
+    		break;
+    	default : 
+    		res = "입력오류 입니다."
+    		break;
+    	}
+    	// 출력
+    	document.getElementById('result1').innerHTML = res;
+    	} 
+	
+     else{
+    	alert('형식이 올바르지 않습니다. 다시 입력해주세요.')
+    } 
+}
+add = () =>{
+	return parseInt(fvalue) + parseInt(svalue);
+};
+subtract = ()=> {
+	return fvalue - svalue;
+};
+multiple = () => {
+	return fvalue * svalue;
+};
+divide = () =>{
+	return fvalue / svalue;
+};
+/*	
+this : 현재 자신의 클래스 => 바디태그에 있는 태그들이 객체화
+어떤 버튼이 proc를 호출했는가 => 여기서는 버튼 객체가 this
+람다함수는 쓰임이 다름. 람다함수에서 this는 람다함수, 현재 함수 자체 
+=> this를 쓸 때는 람다함수 사용 x
+ */
+</script>
+</head>
+<body>
+  <div class="box">
+    <p></p>
+    첫번째수
+    <input type="text" id="first" >
+    <br> 두번째수
+    <input type="text" id="second">
+    <br> <br>
+    <input type="button" value="+" onclick="proc1('+')">
+    <input type="button" value="-" onclick="proc1('-')">
+    <input type="button" value="*" onclick="proc1('*')">
+    <input type="button" value="/" onclick="proc1('/')">
+    <br> <br>
+    <div class="result" id="result1"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+p {
+	background-color: crimson;
+}
+
+a {
+	background-color: gray;
+}
+
+img {
+	width: 200px;
+	height: 150px;
+}
+</style>
+</head>
+<body>
+	<p>a태그 : 하이퍼링크. 페이지를 이동시켜주는 태그</p>
+	<p>속성 : 추가적인 정보를 제공 / 여는 태그에서 name = value의 형태로 지정한다.</p>
+	<a href="http://www.naver.com">네이버</a>
+	<a href="http://www.daum.net">다음</a>
+	<a href="http://www.nate.com">네이트</a>
+	<a href="http://www.w3schools.com">w3schools</a>
+	<a href="http://localhost/webpr/테스트.html">테스트.html</a>
+	<!-- 절대주소. 절대패스 -->
+	<a href="../테스트.html">테스트.html</a>
+	<!-- 상대주소. 상대패스 -->
+	<!-- 테스트.html위치는 현재 폴더안에 있지 않아서 바로 접근 불가.
+../ 는 현재위치에서 한단계 올라가는 명령. -->
+	<hr color="blue">
+	<!-- img태그 : 컨텐츠 없어서 여는태그만 존재
+		 src : 이미지 파일 위치. alt : src 안나올 때 대신 나타남  -->
+	<img src="../images/라벤더1.jpg" alt="라벤더1.jpg">
+	<img src="../images/벚꽃1.jpg" alt="벚꽃1.jpg">
+	<img src="../images/수국1.jpg" alt="수국1.jpg">
+	<hr color="blue">
+	<pre>
+	블럭요소    : 한 줄 전체를 차지하며 줄 끝에서 자동으로 줄바꿈한다.
+	  태그 p, hr, h1~h6
+	
+	인라인 요소 : 정해진 크기만큼만 차지한다. 줄이 바뀌지 않는다.
+	  태그 a, img, mark, sub, sup
+	
+	</pre>
+
+</body>
+</html>

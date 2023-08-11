@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div{
+	border : 1px solid blue;
+	width : 500px;
+	height : 150px;
+	padding : 20px;
+}
+</style>
+
+	<script type="text/javascript">	
+	function proc1(){
+		/* type은 생략할 수 있다.*/
+		var today = new Date();
+		var day1 = today.toLocaleString();
+		 /*
+		// 윈도우에 직접 찍음
+		window.document.write(today + "<br>"); // window는 생략가능
+		window.document.write(day1 + "<br>"); // window는 생략가능
+		*/
+		// div 검색 및 출력
+		var text = document.getElementsByTagName('div'); //return 값 배열
+		text[0].innerHTML = today + "<br>" + day1 + "<br>";  //text배열인데 text로만 쓰면 값 출력 안됨. text[0] 처럼 인덱스값 필수
+		
+		// 출력하려는 내용에 HTML없을 때는 innerText -> <br> 이 태그로 인식하는 것이 아니라 텍스트로 인식됨.
+		//text[0].innerText = today + "<br>" + day1 + "<br>";
+		
+	} // 그냥 스크립트 그대로 head에서 실행할 때는 안됨(div검색부터 안됨)
+	// head에서 사용할 때는 함수가 있어야 실행 가능. 화면 구성되고 버튼 클릭할 때 실행하면 div를 검색할 시간 생김. -> function으로 지정 
+	</script>
+</head>
+<body>
+	<input type="button" value="확인" onclick="proc1()">
+	<br>
+	<br>
+	<div></div>
+
+</body>
+</html>

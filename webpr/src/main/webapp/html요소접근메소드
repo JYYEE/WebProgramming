@@ -1,0 +1,30 @@
+접근메소드 - document.getElementById('id이름') 
+		   - document.getElementsByClassName('class이름')  
+		   - document.getElementsByTagName('tag이름')  
+		   - document.getElementsByName('name이름') 
+		   
+		   - document.formname.요소name  ---es2,4
+		   
+		   - document.querySelector('#이름')  
+		   - document.querySelector('.이름')  
+		   - document.querySelector('tag이름')  
+		   
+		   - document.querySelectorAll('.이름')  
+		   - document.querySelectorAll('tag이름') --- es 6번부터
+
+		// 표준화를 위한 ecmascript 
+		   
+		   
+쿼리 selector는 name속성으로 접근 안됨. id, class, tag이름이 있어야 함.
+id와 class이름으로 접근해봄 
+/* (id는 중복 올 수 없어서 단수/ 나머지는 중복될 수 있어서 복수 ==> return값 배열) */
+window.document.~~인데 window생략 (자바에서 object생략하는 것과 같음)
+
+
+출력
+innerHTML  = str;
+document.querySelector('#이름').innerHTML = str; 
+출력하는 str속에 html 태그가 포함되었을 경우
+
+innerText  = str;
+출력하는 str속에 html 태그가 포함되어 있지 않을 경우

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/* 자바스크립트 */
+	function proc1() {
+		//HTML요소에 접근 검색한다 - 방법:id, class, tagname, name속성이용
+		var a = document.querySelector('#price'); // var : 변수. 타입없이 대입 가능.
+		var b = document.querySelector('#qty');
+	
+		//입력한 값을 가져온다
+		var avalue = a.value;
+		var bvalue = b.value;
+		
+		//계산
+		var res = avalue * bvalue;
+		
+		//출력 - id = result를 검색해야함. - innerHTML / innerText 이용해서 출력 _ 차이점 : 출력하고자 하는 내용속에 HTML 태그 내용의 유무.
+		var result = document.querySelector('#result');
+		
+		result.innerText = res; // 아래것이 덮어쓰여져서 사라짐
+		result.innerHTML = "<h2>" + res +"</h2>"
+		
+	}
+</script>
+<style type="text/css">
+#result, #result2 {
+	border: 2px dotted gold;
+	height: 100px;
+}
+form{
+border : 1px solid crimson;
+margin : 10px;
+padding : 10px;
+}
+</style>
+</head>
+<body>
+	<form action="">
+		물품가격 <input type="text" name="price" id="price"><br>  
+		수량 <input type="text" name="qty" id="qty"><br> <br> 
+		<input type="button" value="확인" onclick="proc1()"> 
+		<br><br>
+		<h1>결과값</h1>
+		<div id="result"></div>
+	</form>
+	
+	<form action="calc.jsp" method="post"> <!-- 전송기능할 때는 action, method필요. action : 어디로 전송. method : 어떻게 전송 -->
+		물품가격 <input type="text" name="price" id="price2"><br>  
+		수량 <input type="text" name="qty" id="qty2"><br> <br> 
+		<p>image를 클릭하면 서버로 전송된다. submit기능을 수행한다.</p>
+		<input type="image" src="../images/image.1.jpg" alt="image.1.jpg"> <!-- image로 submit 역할 만들기 -->
+		<br><br>
+		<h1>결과값</h1>
+		<div id="result2"></div>
+	</form>
+	
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+a:link{
+color : green;
+text-decoration: none;
+}
+a:visited{/*text-decoration이 누르는 순간에 같이 바뀌면서 확인하기 어려움*/
+color : red;
+}
+a:hover{/*마우스가 위에 올려져 있을 때*/
+background-color: silver;
+}
+a:active{/*누르는 순간. hover랑 같이 실행*/
+font-size: 1.3em;
+color : blue;
+text-decoration : line-through;
+}
+p:hover{
+background-color: lime;
+}
+p:active{
+color:red;
+text-decoration: overline;
+}
+p.pp{/* .pp로만 써도 됨. p.pp로 쓰려면 사이 띄우면 안됨. 속성을 이용해서 p[class=pp]를 이용해도 된다.*/
+font-size: 2.0em;
+}
+</style>
+</head>
+<body>
+<div>
+<a href="http://www.naver.com">네이버</a>
+<a href="http://www.daum.net">다음</a>
+<a href="http://www.nate.com">네이트</a>
+</div>
+
+	<p class ="pp"> 라일락 꽃이 피었습니다.</p>
+	<p> 햇빛은 쨍쨍 모래알은 반짝</p>
+	<p> 우리집 강아지는 복슬강아지</p>
+	<p class ="pp"> 동구밖 가수원길</p>
+</body>
+</html>

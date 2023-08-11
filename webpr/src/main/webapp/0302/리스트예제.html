@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+ul#uli{ /* ul의 id가 uli 이므로 ul과 #uli 띄우면 안됨 */
+	/* border: 10px inset red;
+	border-left: none;
+	border-right: none;
+	 */
+	border-top : 10px inset red;
+	border-bottom : 10px inset red;
+	
+	list-style-type : none;
+	height : 70px;
+}
+#uli li { /* li를 옆으로 배치하는 방법 */
+	/* display : inline; */
+	float : left; /* float로 배치하니 ul border가 붙어버림 --> ul에 height 설정 */
+	margin : 15px;
+}
+#uli a {
+	font-size : 1.5em;
+	text-decoration: none;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+	color : black;
+}
+#uli a:hover{
+	text-decoration: underline;
+}
+</style>
+</head>
+<body>
+	<ul>
+		<li><a href="#aaa">네이버</a></li>
+		<!-- #aaa : 현재 페이지 내부에서 마지막으로 이동. -->
+		<li><a href="#">다음</a></li>
+		<!-- #만 있는 것은 아직 위치 지정 안됨. -->
+		<li><a href="#">네이트</a></li>
+		<li><a href="#">w3schools</a></li>
+		<li><a href="#">HOME</a></li><br>
+	</ul>
+	
+	<ul id="uli">
+		<li><a href="#aaa">네이버</a></li>
+		<!-- #aaa : 현재 페이지 내부에서 마지막으로 이동. -->
+		<li><a href="#">다음</a></li>
+		<!-- #만 있는 것은 아직 위치 지정 안됨. -->
+		<li><a href="#">네이트</a></li>
+		<li><a href="#">w3schools</a></li>
+		<li><a href="#">HOME</a></li>
+	</ul>
+</body>
+</html>

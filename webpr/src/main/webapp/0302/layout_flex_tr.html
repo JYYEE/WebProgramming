@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+/*  body{
+   min-width : 900px;
+ } */ 
+	header,nav,aside,section,footer,article	{
+	       border-radius:40px; 
+	      
+	       box-sizing:border-box; 
+	        padding:20px;
+	        margin : 5px;
+	}
+	header{
+		
+		height:150px;
+		background:yellow;
+		
+		margin-bottom:10px;
+		text-align:center;
+	}
+	nav{
+		width:100%;
+		height:65px;
+		background:olive;
+		margin-bottom:10px;
+	}
+	
+	nav{text-align:center;}
+	nav ul {list-style:none; padding:0; margin:0;}
+	nav ul li{display:inline-block; margin:2px 30px;}
+	nav ul li a{color:white; font-weight:bold; font-size:22px; text-decoration:none;}
+	nav ul li a:visited{color:yellow;}
+	nav ul li a:hover{background:red; color:white;}
+	
+	#container{
+	  display : flex;
+	  height : 650px;
+	}
+	#container aside{
+		flex: 15%;
+		flex-shrink : 2;
+		height:100%;
+		background:rgb(90%,60%,60%);
+		
+		
+	}
+	#container aside ul li a{color:white; font-weight:bold; text-decoration:none;}
+	#container aside ul li a:visited{color:yellow;}
+	#container aside ul li a:hover{background:red; color:white;}
+	
+	
+	#container section{
+		flex : 60%;
+		flex-shrink : 1;
+		height:100%;
+		background:rgb(60%,90%,90%);
+		
+		margin-left:10px;
+		
+		display: flex;
+		flex-direction: column;
+		
+	}
+	footer{
+		
+		height:60px;
+		background:rgb(60%,60%,90%);
+		margin-top:10px;
+		text-align:center;
+	}
+	#container article{
+		 height:50%; 
+		border:2px dotted green;
+		margin-bottom:5px;
+		background:rgba(70%, 60%, 20%,0.2);
+		overflow : auto;
+	}
+	
+	#container img{width:100%; height : 100%;}
+	#container h2, h3{margin-top:0;}
+	
+	@media   (max-width : 500px){
+	 #container{
+	    flex : 100%; 
+	   flex-direction: column;
+	   height : auto;
+	 }
+	/* img{
+	     width : 60%;
+	     height : 60%;
+	 }  */ 
+	}
+
+</style>
+</head>
+<body>
+<header>
+	<h1>My Blog Page</h1>
+	<p>시멘틱 태그로 만들어진 페이지 입니다.</p>
+</header>
+<nav>
+	<ul>
+		<li><a href="https://www.w3schools.com/" >w3schools</a></li>
+		<li><a href="https://www.naver.com/">Naver</a></li>
+		<li><a href="https://www.daum.net/">Daum</a></li>
+	</ul>
+</nav>
+<div id="container">
+<aside>
+	<h2>Links</h2>
+	<ul>
+		<li><a href="https://www.w3schools.com/">w3schools</a></li>
+		<li><a href="https://www.naver.com/">Naver</a></li>
+		<li><a href="https://www.daum.net/">Daum</a></li>
+	</ul>
+	<figure>
+		<img src="../images/spongebob.png">
+		<figcaption>스폰지밥</figcaption>
+	</figure>
+</aside>
+<section>
+	<article>
+		<h3>Semantic Tags</h3>
+		시멘틱 요소(Semantic elements)들은 브라우저에게 요소의 의미나 목적을 명확하게 알려주는 요소이다.
+		레이아웃을 만들때 쓰는 것. 의미가 있는 요소라면 div보다는 시멘틱 태그를 사용해준다.<br>
+		&lt;header&gt; : 문서의 머리말<br>
+		&lt;nav&gt; : 네비게이션 링크<br>
+		&lt;article&gt; : 문서의 내용이나 블로그의 포스트<br>
+		&lt;section&gt; : 문서의 섹션을 의미한다.<br>
+		&lt;aside&gt; : 사이드바와 같이 옆에 위치하는 내용<br>
+		&lt;footer&gt; : 문서의 꼬리말(footer)<br>
+		&lt;figure&gt; : 그림이나 도표  &lt;figcaption&gt;홍길동&lt;/figcaption&gt;<br>
+	</article>
+	<article>
+		<h3>div와 span</h3>
+		div은 "divide"의 약자로서 페이지를 논리적인 섹션으로 분리하는데 사용되는 태그이다. span요소는 인라인 요소로서 텍스트를 위한 컨테이너로 사용할 수 있다.
+	</article>
+</section>
+</div>
+<footer>Copyright (c)2019 Hong</footer>
+</body>
+</html>

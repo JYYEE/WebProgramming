@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+proc1 = () => {
+	ultag = document.getElementsByTagName('ul')[0];
+	itemlist = ultag.getElementsByTagName('li');
+	str ="";
+	for(i=0; i<itemlist.length; i++){
+		str += itemlist[i].firstChild.data + "<br>";
+	}
+	document.getElementById('result1').innerHTML = str;
+}
+
+proc2 = () => {
+	ultag = document.getElementsByTagName('ul')[1];
+	listitem = ultag.getElementsByTagName('li');
+	
+	for(i=0;i<listitem.length;i++){
+		text = listitem[i].firstChild.data;
+		imgtag = document.createElement('img');
+		imgtag.src = "../images/"+text ;
+		imgtag.alt = text;
+		listitem[i].appendChild(imgtag);
+	}
+}
+
+proc3 = (litag) =>{ // 클릭한 개체가 기준 --> this 필요
+	
+	text = litag.firstChild.data;
+	imgtag = document.createElement('img');
+	imgtag.src ="../images/"+text;
+	imgtag.alt =text;
+	litag.appendChild(imgtag);
+	
+}
+
+	arr=["hello", "happy", "영화","smile", "sleep", "yolo", "집으로", "치킨", "coffee"]
+	// arr은 전역변수이지만 4번이 실행된 다음에 생성되므로 함수 밖으로 빼주기
+proc4 = () => {
+	rand = parseInt(Math.random()*arr.length); // arr[rand] 
+	ptag = document.createElement('p'); // 부모노드
+	text = document.createTextNode(arr[rand]); // 자식노드
+	ptag.appendChild(text);
+	r4 = document.getElementById('result4')
+	r4.appendChild(ptag);
+	
+}
+
+delproc = () => {
+	
+	//r4.removeChild(r4.firstChild); 위에서부터 삭제
+	r4.removeChild(r4.lastChild); // 밑에서부터 삭제
+	
+}
+
+proc5 = () => {
+	//랜덤 생성 - 문자열 선택
+	rand = parseInt(Math.random()*arr.length)
+	// 문자열로 textNode생성
+	text = document.createTextNode(arr[rand]);
+	// input태그 생성
+	inputtag = document.createElement('input');
+	
+	// input 태그 속성 - type, value설정
+	inputtag.type="button";
+	inputtag.value="삭제";
+	inputtag.onclick = function(inputtag) { // 람다함수에서 this는 함수 그자체를 의미
+		this.parentNode.remove(); // 여기서 this는 inputtag를 의미
+	}
+	
+	// p태그 생성
+	ptag = document.createElement('p');
+	// p태그의 textNode추가
+	ptag.appendChild(text);
+	// p태그의 input태그 추가
+	ptag.appendChild(inputtag);
+	// result5에 p 태그를 추가
+	r5 = document.getElementById('result5');
+	r5.appendChild(ptag);
+	
+} 
+imgrand = null;
+proc6 = (but) => {
+	// border값을 가져온다
+	// 비교 - 있으면 "none"로 설정
+	if(imgrand!=null){
+		imgrand.style.border = "none";
+	}
+	
+	// 시작버튼 검색
+	// 1. 함수가 proc6()일 때. 즉, this를 매개변수로 넘겨주지 않을 때 id를 이용해서 검색
+	//bstart = document.getElementById('pro6')
+	// 2. 함수가 proc6(this)일 때. 즉, this를 매개변수로 넘겨주면 검색할 필요 없음.
+	but.style.display = "none";
+	gbut = but; // 지역변수but 를 전역변수 gbut에 대입해서 stop에서 사용
+	// div id="imgd"를 검색
+	vdimg = document.getElementById("imgd");
+	// 0.5초마다 바뀌도록 인터벌 설정  
+	a= setInterval(function() {
+		// 첫번째 자식 img를 선택
+		fimg = vdimg.firstChild // 문자 가져올 때는 .data/ 문자가 아니면 써주지 말기
+		
+		// 부모의 끝으로 선택된 첫번째 자식을 추가한다.
+		vdimg.appendChild(fimg)	
+	}, 5);
+	
+
+	
+}
+stop = () => {
+	gbut.style.display = "inline";
+	clearInterval(a);
+	// 이미지의 갯수
+	imleng = document.querySelectorAll('.im').length;
+	
+	// 랜덤 = 이미지의 갯수 범위 내에서
+	rand = parseInt(Math.random()*imleng);
+	
+	// 이미지 랜덤 선택
+	imgrand = document.querySelectorAll('.im')[rand];// 변수 설정 안하면 삭제할 때 어려움.
+	
+	// 선택된 이미지 border style
+	imgrand.style.border = "8px double red";
+}
+
+</script>
+<style type="text/css">
+img {
+  width : 100px; 
+  height : 100px;
+  border-radius: 50%;
+}
+#imgd {
+  width : 80%;
+  margin : 10px;
+  height : 100px;
+  border : 5px double blue;
+}
+#imgd img {
+  width : 100px;
+  height : 100px;
+  border-radius : 50%;
+}
+</style>
+</head>
+<body>
+
+
+  <div class="box">
+    <p></p>
+    <ul>
+        <li>List item 1</li>
+        <li>List item 2</li>
+        <li>List item 3</li>
+        <li>List item 4</li>
+        <li>List item 5</li>
+    </ul>
+    
+    <br> <br>
+    <input type="button" value="확인" onclick="proc1()">
+    <br> <br>
+    <div class="result" id="result1"></div>
+  </div>
+  
+  <div class="box">
+    <p>
+      li요소의 text를 가져와서 img객체를 생성하여 추가한다.
+    </p>
+    <ul>
+        <li>spongebob.png</li>
+        <li>딸기스무디.jpg</li>
+        <li>핫초코.jpg</li>
+        <li>coffee1.jpg</li>
+        <li>뱅쇼.jpg</li>
+    </ul>
+    
+    <br> <br>
+    <input type="button" value="확인" onclick="proc2()">
+    <br> <br>
+    <div class="result" id="result2"></div>
+  </div>
+  
+  <div class="box">
+    <p>
+      li요소의 onclick이벤트로 실행<br>
+      이벤트가 발생되면 text를 가져와서 img객체를 생성하여 추가한다. 
+    </p>
+    <ul>
+        <li onclick="proc3(this)">spongebob.png</li> <!-- 클릭했을 때 누른 것을 객체로 넘김 -->
+        <li onclick="proc3(this)">딸기스무디.jpg</li>
+        <li onclick="proc3(this)">핫초코.jpg</li>
+        <li onclick="proc3(this)">coffee1.jpg</li>
+        <li onclick="proc3(this)">뱅쇼.jpg</li>
+    </ul>
+    
+    <br> <br>
+    <div class="result" id="result3"></div>
+  </div>
+  
+  <div class="box">
+    <p>
+      랜덤으로 발생되는 문자열을 textNode로 생성한다. <br> 
+      p태그를 생성하여 textNode를 추가한다. <br>
+      result4에 p태그를 추가한다.
+    </p>   
+    <br> <br>
+    <input type="button" value="추가" onclick="proc4()">
+    <input type="button" value="삭제" onclick="delproc()">
+    <br> <br>
+    <div class="result" id="result4"></div>
+  </div>
+  
+  <div class="box">
+    <p>
+      랜덤으로 발생되는 문자열을 textNode로 생성한다. <br> 
+      input 태그를 생성 -type, value속성을 설정. <br>
+      p태그를 생성하여 textNode와 input태그를 추가한다. <br>
+      result5에 p태그를 추가한다.
+    </p>   
+    <br> <br>
+    <input type="button" value="추가" onclick="proc5()">
+    <input type="button" value="삭제" onclick="delself(this)">
+    <br> <br>
+    <div class="result" id="result5"></div>
+  </div>
+  
+  <div class="box">
+    <p>
+     시작버튼 클릭하면 첫 번째 이미지(index: 0)를 선택해서 맨 뒤로 추가한다.<br>
+     시작버튼은 사라진다. 
+    </p>
+    <div id="imgd">
+      <img class="im" alt="카푸치노.jpg" src="../images/카푸치노.jpg">
+      <img class="im" alt="수구국.jpg" src="../images/수구국.jpg">
+      <img class="im" alt="spongebob.png" src="../images/spongebob.png">
+      <img class="im" alt="등대.jpg" src="../images/등대.jpg">
+      <img class="im" alt="식품2.jpg" src="../images/식품2.jpg">
+      <img class="im" alt="풍차.jpg" src="../images/풍차.jpg">
+    </div>
+       
+    <br> <br>
+    <input type="button" value="시작" id="pro6" onclick="proc6(this)"> 
+    <input type="button" value="종료" onclick="stop()">
+    <br> <br>
+    <div class="result" id="result6"></div>
+  </div>
+</body>
+</html>

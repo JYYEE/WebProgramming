@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div {
+	border: 1px solid blue;
+	width: 500px;
+	height: 200px;
+}
+</style>
+<script type="text/javascript">
+	window.onload = function() {
+		var today = new Date();
+		var vdiv = document.getElementsByTagName('div')
+
+		var str = today + "<br>";
+		str += today.toLocaleString() + "<br>";
+		vdiv[0].innerHTML = str;
+	}
+</script>
+</head>
+<body>
+	<div></div>
+</body>
+</html>
