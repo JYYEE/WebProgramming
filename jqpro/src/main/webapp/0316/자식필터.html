@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.6.4.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+function proc1(){
+	$('td:first-child').css('background', '#727'); // 첫번째 열
+	$('td:nth-child(2)').css('background', '#3a6'); // 두번째 열
+	$('td:nth-child(3)').css('background', '#1ab'); // 세번째 열
+	$('td:nth-child(4)').css('background', '#aed'); // 마지막 열
+	//$('td:last-child').css('background', '#827'); // 마지막 열 = 위랑 같음
+	//$('tr:first-child').css('background', 'black'); // td로 스타일 주다가 tr로 주면 인식 못함. 
+	// tr이면 tr, td면 td 통일성 있게 지정해야함 
+	$('tr:first-child td').css('background', 'black'); // 열끼리 색칠된 부분에 맨 윗줄 색칠 가능.
+	
+	//$('tr:first-child').css('background', '#727'); // 첫번째 줄
+	//$('tr:nth-child(2)').css('background', '#3a6'); // 두번째 줄
+	//$('tr:nth-child(3)').css('background', '#1ab'); // 세번째 줄
+	//$('tr:nth-child(4)').css('background', '#aed'); // 마지막 줄
+	//$('tr:last-child').css('background', '#827'); // 마지막 줄 = 위랑 같음
+	
+	//$('tr:first-child').css('background', 'black'); // 마지막으로 적용됨
+}   
+</script>
+<style type="text/css">
+table {
+  border : 1px solid blue;
+}
+td {
+  width : 250px;
+  height : 50px; 
+  text-align : center;
+}
+
+</style>
+</head>
+<body>
+
+  <div class="box">
+    <p></p>
+    <br> <br>
+    <input type="button" value="확인" onclick="proc1()">
+    <br> <br>
+    <div class="result" id="result1">
+    <table border="1">
+        <tr>
+          <td>일</td>
+          <td>이</td>
+          <td>삼</td>
+          <td>사</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+    
+    
+    </div>
+  </div>
+</body>
+</html>

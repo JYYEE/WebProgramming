@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<style>
+.siblings * {
+	display: block;
+	border: 2px solid lightgrey;
+	color: lightgrey;
+	padding: 5px;
+	margin: 15px;
+}
+
+.start {
+	color: black;
+}
+
+div.box {
+	height: auto;
+}
+
+div {
+	height: 90%;
+}
+
+div.result {
+	height: 80%;
+}
+
+.siblings {
+	height: 70%;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#next').on('click', function() {
+			$("#result1 li.start").next().css({
+				"color" : "red",
+				"border" : "2px solid red"
+			});
+		})
+
+		$('#nextAll').on('click', function() {
+			$('#result1 li.start').nextAll().css({
+				"color" : "blue",
+				"border" : "2px solid blue"
+			})
+		})
+
+		$('#nextUnt').on('click', function() {
+			$('#result1 li.start').nextUntil('#result1 li:last').css({
+				"color" : "green",
+				"border" : "2px solid green"
+			})
+		})
+		$('#prev').on('click', function() {
+			$('#result2 li.start').prev().css({
+				"color" : "red",
+				"border" : "2px solid red"
+			})
+		})
+
+		$('#prevAll').on('click', function() {
+			$('#result2 li.start').prevAll().css({
+				"color" : "blue",
+				"border" : "2px solid blue"
+			})
+		})
+		$('#prevUnt').on('click', function() {
+			$('#result2 li.start').prevUntil('#result2 li:first').css({
+				"color" : "green",
+				"border" : "2px solid green"
+			})
+		})
+		$('#siblings').on('click', function() {
+			$('#result2 li.start').siblings().css({
+				"color" : "purple",
+				"border" : "2px solid purple"
+			})
+		})
+		$('#siblings_sel').on('click', function() {
+			$('#result2 li.start').siblings(':first').css({
+				"color" : "hotpink",
+				"border" : "2px solid hotpink"
+			})
+		})
+	})
+</script>
+</head>
+<body>
+
+  <div class="box">
+    <p></p>
+    <br> <br>
+    <input type="button" value="next" id="next">
+    <input type="button" value="nextAll" id="nextAll">
+    <input type="button" value="nextUnt" id="nextUnt">
+    <br> <br>
+    <div class="result" id="result1">
+      <div style="width: 500px;" class="siblings">
+        <ul>
+          ul (parent)
+          <li>li (sibling)</li>
+          <li>li (sibling)</li>
+          <li>li (sibling)</li>
+          <li>li (sibling)</li>
+          <li class="start">li (sibling with class name "start")</li>
+          <li>li (the next sibling of li with class name "start")</li>
+          <li>li (sibling)</li>
+          <li>li (sibling)</li>
+          <li>li (sibling)</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="box">
+    <p></p>
+    <br> <br>
+    <input type="button" value="prev" id="prev">
+    <input type="button" value="prevAll" id="prevAll">
+    <input type="button" value="prevUnt" id="prevUnt">
+    <br> <br>
+    <input type="button" value="siblings" id="siblings">
+    <input type="button" value="siblings_sel" id="siblings_sel">
+    <div class="result" id="result2">
+      <div style="width: 500px;" class="siblings">
+        <ul>
+          ul (parent)
+          <li>li (sibling)</li>
+          <li>li (sibling)</li>
+          <li>li (sibling)</li>
+          <li>li (sibling)</li>
+          <li class="start">li (sibling with class name "start")</li>
+          <li>li (the next sibling of li with class name "start")</li>
+          <li>li (sibling)</li>
+          <li>li (sibling)</li>
+          <li>li (sibling)</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

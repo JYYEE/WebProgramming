@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.6.4.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function() {
+		$('#txt').on('click', function() {
+			$.get(
+					'http://localhost/jqpro/0322/text.jsp',
+					function(res){ // 객체 타입 안쓰고 변수명만 작성. 응답 성공
+						vres = res.split("/");
+					
+						code = "<ul>"
+						$.each(vres, function(i){
+							code +="<li>" + vres[i] +"</li>"
+						})
+						code += "</ul>"
+						$('#result1').html(code);
+					},
+					'text'
+					)
+			
+			
+			
+			
+			/* $.ajax({
+				url : 'http://localhost/jqpro/0322/text.jsp',
+				type : 'get',
+				success : function(res){ // 객체 타입 안쓰고 변수명만 작성. 응답 성공
+					vres = res.split("/");
+				
+					code = "<ul>"
+					$.each(vres, function(i){
+						code +="<li>" + vres[i] +"</li>"
+					})
+					code += "</ul>"
+					$('#result1').html(code);
+				},
+				error : function(xhr){ // 객체 타입 안쓰고 변수명만 작성. 응답 실패
+					alert("상태 : " + xhr.status);
+				}, 
+				dataType : 'text'
+				
+			}) */
+			
+		})
+
+		$('#jarr').on('click', function() {
+			$.ajax({
+				url : 'http://localhost/jqpro/0322/jsonArr.jsp',
+				type : 'get',
+				success : function(res){
+					code ="<ol>"
+					$.each(res,function(i){
+						code +=`<li> ${res[i]} </li>`
+					})
+					code +=`</ol>`
+					$('#result2').html(code);
+				},
+				error : function(xhr){
+					alert("상태 : " + xhr.status);
+				}, 
+				dataType : 'json'
+			})
+		})
+		$('#jobj').on('click', function() {
+				// /jqpro/0322/jsonObj.jsp 이렇게 써도 되고 ../0322/jsonObj.jsp으로 써도 됨. web에서는 절대경로를 적어줄 것
+			$.ajax({
+				url : 'http://localhost/jqpro/0322/jsonObj.jsp', 
+				type : 'get',
+				success : function(res){
+					code = "아이디 : " + res.id + "<br>";
+					code += "이름 : " + res.name + "<br>";
+					code += "전화번호 : " + res.tel + "<br>";
+					code += "메일 : " + res.mail + "<br>";
+					
+					$('#result3').html(code);
+				}, 
+				error : function(xhr){
+					alert("상태 : " + xhr.status);
+				},
+				dataType : 'json'
+			})
+		})
+		$('#jobarr').on('click', function() {
+			$.ajax({
+				url : 'http://localhost/jqpro/0322/jsonObjArr.jsp', 
+				type : 'get',
+				success : function(res){
+					code ="";
+					$.each(res, function(i, v) { // v= res[i] 를 의미
+						code += (i + 1) + "번째 회원정보" + "<br>";
+						code += "아이디 : " + v.id + "<br>";
+						code += "이름 : " + v.name + "<br>";
+						code += "전화번호 : " + res[i].tel + "<br>";
+						code += "메일 : " + res[i].mail + "<br><br>";
+					})
+					$('#result4').html(code);
+				}, 
+				error : function(xhr){
+					alert("상태 : " + xhr.status);
+				},
+				dataType : 'json'
+			})
+		})
+		
+	})
+</script>
+<style type="text/css">
+div.box{
+  height : auto;
+}
+#result {
+  box-sizing : border-box;
+  width : 95%;
+  display: flex;
+  flex-wrap: wrap;
+  height : 80%;
+}
+#result div{
+  border : 1px solid blue;
+  padding : 10px;
+  margin : 5px;
+  flex : 1;
+  width : 300px;
+}
+</style>
+</head>
+<body>
+
+  <div class="box">
+    <p></p>
+    <br> <br>
+    <input type="button" value="txt" id="txt">
+    <input type="button" value="json배열" id="jarr">
+    <input type="button" value="jsonObject" id="jobj">
+    <input type="button" value="jsonObj배열" id="jobarr">
+
+    <br> <br>
+    <div id="result">
+      <div class="result" id="result1"></div>
+      <div class="result" id="result2"></div>
+      <div class="result" id="result3"></div>
+      <div class="result" id="result4"></div>
+    </div>
+  </div>
+</body>
+</html>

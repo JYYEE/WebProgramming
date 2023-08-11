@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.6.4.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+	$('#btn1').on('click', function(){
+		
+		str="";
+		// 체크박스에서 체크된 아이템들을 가져온다.
+		// 여러개 선택했을 때 맨 처음꺼만 가져옴
+		// ==> 반복문 이용해서 여러개 선택한거 다 가져와야함.
+		// this 없으면 맨 앞에거만 여러번 가져옴 ==> this이용해서 선택된 것 다 가져옴.
+		$('input:checkbox:checked').each(function(){
+			str += $(this).val() + " "; 
+			
+		})
+		
+		alert(str);
+		
+	})
+	
+	$('#btn2').on('click', function(){
+		str="";
+		$('#spring option:selected').each(function(){
+			str += $(this).val() + "&nbsp;&nbsp;&nbsp;&nbsp; ";
+		})
+		vd = $('<div id="fs"></div>');
+		$('#result2').append(vd);
+		
+		$('#fs').html(str)
+	})
+})
+</script>
+</head>
+<body>
+
+  <div class="box">
+    <p></p>
+    <br> <br>
+    <input type="button" value="확인" id="btn1">
+    <br> <br>
+    <div class="result" id="result1">
+      <form action="checkbox.jsp" method="post">
+        취 미 :
+        <input type="checkbox" name="hobby" value="여행" checked> 여행
+        <input type="checkbox" name="hobby" value="장기"> 장기
+        <input type="checkbox" name="hobby" value="바둑"> 바둑
+        <input type="checkbox" name="hobby" value="독서"> 독서
+        <input type="checkbox" name="hobby" value="낚시"> 낚시
+        <input type="submit">
+        <br> <br>
+      </form>
+    </div>
+  </div>
+  
+  <div class="box">
+    <p></p>
+    <br> <br>
+    <input type="button" value="확인" id="btn2">
+    <br> <br>
+    <div class="result" id="result2">
+      <form>
+        봄소식 : <br><br><select name="spring" id="spring" multiple size="6">
+          <option>개나리</option>
+          <option selected>진달래</option>
+          <option>민들레</option>
+          <option selected>벚꽃</option>
+          <option>목련</option>
+          <option>철쭉</option>
+        </select>
+      </form>
+    </div>
+    
+  </div>
+  
+</body>
+</html>

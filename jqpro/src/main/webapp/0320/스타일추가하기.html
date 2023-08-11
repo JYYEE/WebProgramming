@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.6.4.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+	$('#result1 p').on('click', function(){
+		$(this).addClass('font20');
+		// 동적으로 폰트 사이즈 변화하는 방법은 다음 방법도 가능
+		// $(this).css('font-size', '2.0em');
+		
+	})
+	
+	$('#result1 p').on('dblclick', function(){ // dblclick : 더블클릭
+		$(this).removeClass('font20');
+	})
+	
+	$('#result2 p').on('mouseover', function(){ // mouseover : hover 와 같은 의미. 마우스 올려놓을 때
+		$(this).addClass('bcolor');
+	})
+	$('#result2 p').on('mouseout', function(){ // mouseout : 마우스 내려놓을 때
+		$(this).removeClass('bcolor');
+	})
+	$('#result3 p').on('click', function(){ // 
+		$(this).toggleClass('font20');
+	})
+	$('#result4 p').on('click', function(){ // has를 이용하여 토글클래스 작성
+		if($(this).hasClass('bcolor')){
+			$(this).removeClass('bcolor');
+		} else {
+			$(this).addClass('bcolor');
+		}
+	})
+	
+})
+</script>
+<style type="text/css">
+.font20{
+  font-size : 2em;
+}
+.bcolor {
+  background : lime;
+}
+</style>
+</head>
+<body>
+
+  <div class="box">
+    <p>
+    click : addClass('font20')<br>
+    dblclick(더블클릭) : removeClass('font20')<br>
+    </p>
+    <br> <br>
+    <div class="result" id="result1">
+      <p>무궁화 꽃이 피었습니다.</p>
+      <p>무궁화 꽃이 피었습니다.</p>
+      <p>무궁화 꽃이 피었습니다.</p>
+      <p>무궁화 꽃이 피었습니다.</p>
+    </div>
+  </div>
+
+  <div class="box">
+    <p>
+    mouseover : addClass('bcolor')<br>
+    mouseout : removeClass('bcolor')<br>
+    </p>
+    <br> <br>
+    <div class="result" id="result2">
+      <p>무궁화 꽃이 피었습니다.</p>
+      <p>무궁화 꽃이 피었습니다.</p>
+      <p>무궁화 꽃이 피었습니다.</p>
+      <p>무궁화 꽃이 피었습니다.</p>
+    </div>
+  </div>
+  
+  <div class="box">
+    <p>
+    click : toggleClass('font20')<br>
+    </p>
+    <br> <br>
+    <div class="result" id="result3">
+      <p>무궁화 꽃이 피었습니다.</p>
+      <p>무궁화 꽃이 피었습니다.</p>
+      <p>무궁화 꽃이 피었습니다.</p>
+      <p>무궁화 꽃이 피었습니다.</p>
+    </div>
+  </div>
+  
+  <div class="box">
+    <p>
+    click : hasClass('bcolor')<br>
+    </p>
+    <br> <br>
+    <div class="result" id="result4">
+      <p>무궁화 꽃이 피었습니다.</p>
+      <p>무궁화 꽃이 피었습니다.</p>
+      <p>무궁화 꽃이 피었습니다.</p>
+      <p>무궁화 꽃이 피었습니다.</p>
+    </div>
+  </div>
+</body>
+</html>

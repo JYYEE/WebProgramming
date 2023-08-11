@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.6.4.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+	$('#btn1').on('click', function(){
+		//$('img').attr("title", '그림1'); 
+		// title - 마우스 올려놓으면 뜨는 그림의 이름
+		$('img').attr("title", function(){
+			// 해당 img의 src의 값을 가져온다.
+			vsrc = $(this).attr('src') ;
+			
+			// 이름 부분을 추출한다. - slice
+			// 파일 이름 추출할 때 .과 / 사이에 이름 존재하는 성질 이용하여 추출
+			start = vsrc.lastIndexOf("/")+1; // 10
+			end = vsrc.lastIndexOf(".");
+			
+			// slice(start, end)
+			vtitle = vsrc.slice(start, end);
+			
+			return vtitle; // "title"부분으로 리턴됨.
+		});
+	})
+	$('img').on('click', function(){
+		$(this).removeAttr('title');
+	})
+})
+</script>
+<style type="text/css">
+img {
+  width : 100px;
+  height : 100px;
+}
+</style>
+</head>
+<body>
+
+  <div class="box">
+    <p></p>
+    <br> <br>
+    <input type="button" value="확인" id="btn1">
+    <br> <br>
+    <div class="result" id="result1">
+      <img alt="coffee1.jpg" src="../images/coffee1.jpg">
+      <img alt="jQuery.jpg" src="../images/jQuery.jpg">
+      <img alt="chopa.jpg" src="../images/chopa.jpg">
+      <img alt="UML.jpg" src="../images/UML.jpg">
+      <img alt="Lighthouse.jpg" src="../images/Lighthouse.jpg">
+    </div>
+  </div>
+</body>
+</html>
